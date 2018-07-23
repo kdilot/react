@@ -14,8 +14,8 @@ class Phoneform extends Component {
         e.preventDefault();
         this.props.onCreate(this.state);
         this.setState({
-            name:'',
-            phone:''
+            name: '',
+            phone: ''
         })
     }
     render() {
@@ -41,13 +41,33 @@ import Phoneform from './component/Phoneform';
 import './App.css';
 
 class App extends Component {
-  handleChange = (data) => {
-    console.log(data);
+  id = 2
+  state = {
+    information: [
+      {
+        id: 0,
+        name: 'Tom',
+        phone: '123-345-3454'
+      },
+      {
+        id: 1,
+        name: 'Jerry',
+        phone: '345-643-2234'
+      },
+    ]
+  }
+  handleCreate = (data) => {
+    const { information } = this.state;
+    this.setState({
+      information: information.concat({ id: this.id++, ...data })
+    })
   }
   render() {
-    return(
+    const {information} = this.state;
+    return (
       <div>
-        <Phoneform onCreate={this.handleChange} />
+        <Phoneform onCreate={this.handleCreate}/>
+        {JSON.stringify(information)}
       </div>
     );
   }
