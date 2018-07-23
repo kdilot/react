@@ -21,7 +21,7 @@ class PhoneInfo extends Component {
         } = this.props.info;
 
         return (
-            <div style={style}>
+            <div className="List">
                 <div><b>{name}</b></div>
                 <div>{phone}</div>
             </div>
