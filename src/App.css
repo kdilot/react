@@ -6,3 +6,9 @@
   margin:8px;
   font-weight: 600;
 }
+.List {
+  background: black;
+  color: aqua;
+  padding: 8px;
+  margin: 8px;
+}
