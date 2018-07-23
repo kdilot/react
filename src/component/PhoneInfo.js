@@ -9,13 +9,6 @@ class PhoneInfo extends Component {
         }
     }
     render() {
-        const style = {
-            background: 'black',
-            color: 'aqua',
-            padding: '8px',
-            margin: '8px'
-        };
-
         const {
             name, phone, id
         } = this.props.info;
