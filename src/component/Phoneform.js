@@ -11,12 +11,18 @@ class Phoneform extends Component {
         });
     }
     handleSubmit = (e) => {
+      if(!this.state.name || !this.state.phone) {
+        e.preventDefault();
+        alert('need name and phone information.');
+      } else {
         e.preventDefault();
         this.props.onCreate(this.state);
         this.setState({
             name: '',
             phone: ''
         })
+      }
+        
     }
     render() {
         return (
