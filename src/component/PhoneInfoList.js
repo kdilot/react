@@ -3,9 +3,13 @@ import PhoneInfo from './PhoneInfo';
 
 class PhoneInfoList extends Component {
     static defaultProps = {
-        list: [],
+        data: [],
         onRemove: () => console.warn('onRemove not defined'),
         onUpdate: () => console.warn('onUpdate not defined'),
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps.data !== this.props.data;
     }
 
     render() {

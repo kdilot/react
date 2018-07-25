@@ -17,7 +17,14 @@ class App extends Component {
         name: 'Jerry',
         phone: '345-643-2234'
       },
-    ]
+    ],
+    keyword: ''
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      keyword: e.target.value
+    })
   }
 
   handleCreate = (data) => {
@@ -44,10 +51,16 @@ class App extends Component {
   }
 
   render() {
+    const { information, keyword } = this.state;
+    const filteredList = information.filter(
+      info => info.name.indexOf(keyword) !== -1
+    );
+
     return (
       <div>
         <Phoneform onCreate={this.handleCreate} />
-        <PhoneFormList data={this.state.information} onRemove={this.handleRemove} onUpdate={this.handleUpdate} />
+        <p><input className="App" placeholder="Search Name" onChange={this.handleChange} value={keyword} /></p><hr />
+        <PhoneFormList data={filteredList} onRemove={this.handleRemove} onUpdate={this.handleUpdate} />
       </div>
     );
   }
