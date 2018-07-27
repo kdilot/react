@@ -24,19 +24,19 @@ class PhoneInfo extends Component {
 
     handleToggleEdit = () => {
         const { editing } = this.state;
-        this.setState({ editing: !editing, cancel: true })
+        this.setState({ editing: !editing, cancel: true });
     }
 
     handleCancel = () => {
         const { editing } = this.state;
-        this.setState({ editing: !editing, cancel: false })
+        this.setState({ editing: !editing, cancel: false });
     }
 
     handleChange = (e) => {
         const { name, value } = e.target;
         this.setState({
             [name]: value
-        })
+        });
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -45,7 +45,7 @@ class PhoneInfo extends Component {
             this.setState({
                 name: info.name,
                 phone: info.phone
-            })
+            });
         }
         if (prevState.editing && !this.state.editing) {
             onUpdate(info.id, {
@@ -69,7 +69,6 @@ class PhoneInfo extends Component {
     }
 
     render() {
-        console.log('render PhoneInfo ' + this.props.info.id);
         const { editing } = this.state;
         if (editing) {
             return (
