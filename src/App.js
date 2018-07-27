@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Phoneform from './component/Phoneform';
 import PhoneFormList from './component/PhoneInfoList';
+import Imutable from './Immutable';
 import './App.css';
 
 class App extends Component {
@@ -24,21 +25,21 @@ class App extends Component {
   handleChange = (e) => {
     this.setState({
       keyword: e.target.value
-    })
+    });
   }
 
   handleCreate = (data) => {
     const { information } = this.state;
-    this.setState({
+    this.setState({ 
       information: information.concat({ id: this.id++, ...data })
-    })
+    });
   }
 
   handleRemove = (id) => {
     const { information } = this.state;
     this.setState({
       information: information.filter(info => info.id !== id)
-    })
+    });
   }
 
   handleUpdate = (id, data) => {
@@ -47,7 +48,7 @@ class App extends Component {
       information: information.map(
         info => id === info.id ? { ...info, ...data } : info
       )
-    })
+    });
   }
 
   render() {
@@ -58,6 +59,7 @@ class App extends Component {
 
     return (
       <div>
+        <Imutable />
         <Phoneform onCreate={this.handleCreate} />
         <p><input className="App" placeholder="Search Name" onChange={this.handleChange} value={keyword} /></p><hr />
         <PhoneFormList data={filteredList} onRemove={this.handleRemove} onUpdate={this.handleUpdate} />
