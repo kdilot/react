@@ -1,68 +1,18 @@
 import React, { Component } from 'react';
-import Phoneform from './component/Phoneform';
-import PhoneFormList from './component/PhoneInfoList';
-import Imutable from './Immutable';
+import { HocComponent, Component1, Component2, Component3 } from 'hoc';
 import './App.css';
 
+const Com1 = HocComponent(Component1, 'com1')
+const Com2 = HocComponent(Component2, 'com2')
+const Com3 = HocComponent(Component3, 'com3')
+
 class App extends Component {
-  id = 2
-  state = {
-    information: [
-      {
-        id: 0,
-        name: 'Tom',
-        phone: '123-345-3454'
-      },
-      {
-        id: 1,
-        name: 'Jerry',
-        phone: '345-643-2234'
-      },
-    ],
-    keyword: ''
-  }
-
-  handleChange = (e) => {
-    this.setState({
-      keyword: e.target.value
-    });
-  }
-
-  handleCreate = (data) => {
-    const { information } = this.state;
-    this.setState({ 
-      information: information.concat({ id: this.id++, ...data })
-    });
-  }
-
-  handleRemove = (id) => {
-    const { information } = this.state;
-    this.setState({
-      information: information.filter(info => info.id !== id)
-    });
-  }
-
-  handleUpdate = (id, data) => {
-    const { information } = this.state;
-    this.setState({
-      information: information.map(
-        info => id === info.id ? { ...info, ...data } : info
-      )
-    });
-  }
-
   render() {
-    const { information, keyword } = this.state;
-    const filteredList = information.filter(
-      info => info.name.indexOf(keyword) !== -1
-    );
-
     return (
       <div>
-        <Imutable />
-        <Phoneform onCreate={this.handleCreate} />
-        <p><input className="App" placeholder="Search Name" onChange={this.handleChange} value={keyword} /></p><hr />
-        <PhoneFormList data={filteredList} onRemove={this.handleRemove} onUpdate={this.handleUpdate} />
+        <Com1 />
+        <Com2 />
+        <Com3 />
       </div>
     );
   }
